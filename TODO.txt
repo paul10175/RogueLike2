@@ -1,0 +1,14 @@
+Jason:
+AffineTransforms
+BodyComponent
+InputHandler
+
+Fritz:
+HeadComponent
+
+Paul:
+Character GameObject
+Tear (GameObject and Component)
+
+All:
+Animations
