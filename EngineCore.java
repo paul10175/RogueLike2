@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -25,14 +24,14 @@ public class EngineCore extends Canvas implements Runnable{
 		       Scale;
 	public String Name;
 	public JFrame Frame;
-	public Boolean runing;
+	public Boolean running;
 	
 	private int SleepTime = 0;
 	
 	public ArrayList<GameObject> elements,tempElements;
 	
 	private BufferedImage BackGround;
-	private int[] pixles;
+	private int[] pixels;
 	
 	public static int FCount = 0;
 	public static int LCount = 0;
@@ -63,7 +62,7 @@ public class EngineCore extends Canvas implements Runnable{
 		
 		// Hard-coding the sky-box (not the best thing to do)
 		this.BackGround = new BufferedImage (this.Width,this.Height,BufferedImage.TYPE_INT_RGB);
-		this.pixles = ((DataBufferInt)BackGround.getRaster().getDataBuffer()).getData();
+		this.pixels = ((DataBufferInt)BackGround.getRaster().getDataBuffer()).getData();
 		
 		// Setting up the canvas 
 		setMinimumSize(new Dimension(this.Width*this.Scale, this.Height * this.Scale));
@@ -83,12 +82,12 @@ public class EngineCore extends Canvas implements Runnable{
 	}
 	
 	public synchronized void start() {
-		this.runing = true;
+		this.running = true;
 		new Thread(this).start();
 	}
 	
 	public synchronized void stop() {
-		this.runing = false;
+		this.running = false;
 		new Thread(this).start();
 	}
 	
@@ -101,7 +100,7 @@ public class EngineCore extends Canvas implements Runnable{
 		
 		double delta = 0;
 		
-		while(this.runing) {
+		while(this.running) {
 			Frame.requestFocusInWindow();
 			tempElements = new ArrayList<GameObject>(elements);
 			boolean render = true;
