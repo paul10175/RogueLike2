@@ -1,7 +1,4 @@
-/AssetsCenter.class
-/EngineCore.class
-/GameObject.class
-/Component.class
-/InputHandler.class
-/Run.class
-/BodyComponent.class
+##############################
+## Java
+##############################
+*.class
