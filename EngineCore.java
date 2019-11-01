@@ -44,7 +44,6 @@ public class EngineCore extends Canvas implements Runnable{
 	
 	public EngineCore(int Size,int Ratio, int Scale, String Name, String path){
 	
-	
 	//initiation the variables
 		this.Height = Size;
 		this.Width = Size * Ratio;
@@ -147,10 +146,10 @@ public class EngineCore extends Canvas implements Runnable{
 	}
 	
 	public void logic() {
-	//for(int i = GameObject.Min; i <= GameObject.Max; i++) {
-		//for(GameObject j: tempElements)
-			//j.logic(i);
-		//}
+//		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
+//			for(GameObject j: tempElements)
+//				j.logic(i);
+//		}
 	}
 	
 	
