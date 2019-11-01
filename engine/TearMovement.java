@@ -7,7 +7,7 @@ import java.awt.geom.AffineTransform;
 public class TearMovement extends Component{
 	
 	protected int lastXPos, lastYPos;
-	protected Enum lastDirection;
+	protected Enum<Direction> lastDirection;
 	
 	public TearMovement(Tear parent) {
 		super(parent);
