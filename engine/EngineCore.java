@@ -1,22 +1,15 @@
+package engine;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 
 public class EngineCore extends Canvas implements Runnable{
 	public int Width,
@@ -26,7 +19,7 @@ public class EngineCore extends Canvas implements Runnable{
 	public JFrame Frame;
 	public Boolean running;
 	
-	private int SleepTime = 0;
+	private int SleepTime = 5;
 	
 	public ArrayList<GameObject> elements,tempElements;
 	
@@ -40,7 +33,7 @@ public class EngineCore extends Canvas implements Runnable{
 	
 	public static int runSpeed = 60;
 	public static AssetsCenter assets;
-	public static InputHandler inputs;
+	//public static InputHandler inputs;
 	
 	public EngineCore(int Size,int Ratio, int Scale, String Name, String path){
 	
@@ -55,7 +48,6 @@ public class EngineCore extends Canvas implements Runnable{
 		// Starting the data collection/storage systems
 		//inputs = new InputHandler(Frame);
 		assets = new AssetsCenter(this.path);
-		ArrayList<BufferedImage> list = assets.getImageList("empt.png");
 		elements = new ArrayList<GameObject>();
 		
 		
@@ -72,12 +64,27 @@ public class EngineCore extends Canvas implements Runnable{
 		this.Frame.setLayout(new BorderLayout());
 		
 		this.Frame.add(this, BorderLayout.CENTER);
-		Frame.getContentPane().add(new JLabel(new ImageIcon(list.get(0))));
 		this.Frame.pack();
 		
 		this.Frame.setResizable(true);
 		this.Frame.setLocationRelativeTo(null);
 		this.Frame.setVisible(true);
+		
+		BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
+		BackGround back = new BackGround(img);
+		DisplayBackGround display = new DisplayBackGround(back);
+		display.setPriority(Priority.BACKGROUND);
+		back.addComponent(display);
+		Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage)assets.getImage("boiS.png", 38));
+		TearMovement t2 = new TearMovement(t);
+		t.addComponent(t2);
+		Character c = new Character(500, 500, assets.getImageList("boiS.png"));
+		BodyComponent bc = new BodyComponent(c);
+		c.addComponent(bc);
+		AddObject(back);
+		AddObject(t);
+		AddObject(c);
+		
 	}
 	
 	public synchronized void start() {
@@ -98,6 +105,9 @@ public class EngineCore extends Canvas implements Runnable{
 		double nsPL = 1000000000D/ runSpeed;
 		
 		double delta = 0;
+		
+		
+		
 		
 		while(this.running) {
 			Frame.requestFocusInWindow();
@@ -135,8 +145,7 @@ public class EngineCore extends Canvas implements Runnable{
 				LCount = 0;
 				FCount = 0;
 			}
-			
-			
+
 			//resets
 			//inputs.Reset();
 			//GridCollider.reset();
@@ -146,10 +155,10 @@ public class EngineCore extends Canvas implements Runnable{
 	}
 	
 	public void logic() {
-//		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
-//			for(GameObject j: tempElements)
-//				j.logic(i);
-//		}
+		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
+			for(GameObject j: tempElements)
+				j.logic(i);
+		}
 	}
 	
 	
@@ -164,17 +173,17 @@ public class EngineCore extends Canvas implements Runnable{
 		}
 			
 		Graphics2D G = (Graphics2D) bs.getDrawGraphics();
-		G.setBackground(Color.LIGHT_GRAY);
-		G.clearRect(0, 0, this.Width*10, this.Height*10);
+		//G.setBackground(Color.LIGHT_GRAY);
+		//G.clearRect(0, 0, this.Width*10, this.Height*10);
 		//Background color (in most cases you will have an element background, which draws a picture instead)
 		//G.setColor(Color.decode("#33FFFF"));
-		//G.fillRect(0, 0, Width*Scale, Height*Scale);
-		
+		//G.fillRect(0, 0, 500, 500);
+
 		//calling the graphic methods of every element
-		//for(int i = GameObject.Min; i <= GameObject.Max; i++) {
-			//for(GameObject j: tempElements)
-				//j.graphics(i,G);
-		//}
+		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
+			for(GameObject j: tempElements)
+				j.graphics(i,G);
+		}
 		
 		
 		G.dispose();
