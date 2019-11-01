@@ -102,6 +102,19 @@ public class EngineCore extends Canvas implements Runnable{
 		
 		double delta = 0;
 		
+		
+		BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
+		BackGround back = new BackGround(img);
+		DisplayBackGround display = new DisplayBackGround(back);
+		display.setPriority(Priority.BACKGROUND);
+		back.addComponent(display);
+		Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage)assets.getImage("boiS.png", 38));
+		TearMovement t2 = new TearMovement(t);
+		t2.setPriority(Priority.TEAR_NORTH);
+		t.addComponent(t2);
+		AddObject(back);
+		AddObject(t);
+		
 		while(this.running) {
 			Frame.requestFocusInWindow();
 			tempElements = new ArrayList<GameObject>(elements);
@@ -139,11 +152,6 @@ public class EngineCore extends Canvas implements Runnable{
 				FCount = 0;
 			}
 			
-			Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage)assets.getImage("boiS.png", 38));
-			TearMovement t2 = new TearMovement(t);
-			t2.setPriority(Priority.TEAR_NORTH);
-			t.addComponent(t2);
-			AddObject(t);
 			//resets
 			//inputs.Reset();
 			//GridCollider.reset();
@@ -171,14 +179,12 @@ public class EngineCore extends Canvas implements Runnable{
 		}
 			
 		Graphics2D G = (Graphics2D) bs.getDrawGraphics();
-		G.setBackground(Color.LIGHT_GRAY);
-		G.clearRect(0, 0, this.Width*10, this.Height*10);
+		//G.setBackground(Color.LIGHT_GRAY);
+		//G.clearRect(0, 0, this.Width*10, this.Height*10);
 		//Background color (in most cases you will have an element background, which draws a picture instead)
-		G.setColor(Color.decode("#33FFFF"));
-		G.fillRect(0, 0, 500, 500);
-		BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
-		Graphics2D g2d = (Graphics2D) G;
-		g2d.drawImage(img, 0, 0, null);
+		//G.setColor(Color.decode("#33FFFF"));
+		//G.fillRect(0, 0, 500, 500);
+		//BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
 		//calling the graphic methods of every element
 		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
 			for(GameObject j: tempElements)
