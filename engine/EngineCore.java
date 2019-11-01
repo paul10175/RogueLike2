@@ -19,7 +19,7 @@ public class EngineCore extends Canvas implements Runnable{
 	public JFrame Frame;
 	public Boolean running;
 	
-	private int SleepTime = 5;
+	private int SleepTime = 10;
 	
 	public ArrayList<GameObject> elements,tempElements;
 	
@@ -106,9 +106,6 @@ public class EngineCore extends Canvas implements Runnable{
 		
 		double delta = 0;
 		
-		
-		
-		
 		while(this.running) {
 			Frame.requestFocusInWindow();
 			tempElements = new ArrayList<GameObject>(elements);
@@ -165,7 +162,7 @@ public class EngineCore extends Canvas implements Runnable{
 	
 	
 	public void graphic() {
-	
+
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null) {
 			createBufferStrategy(3);
