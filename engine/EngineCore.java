@@ -1,4 +1,5 @@
 package engine;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -41,7 +42,7 @@ public class EngineCore extends Canvas implements Runnable{
 	
 	public static int runSpeed = 60;
 	public static AssetsCenter assets;
-	public static InputHandler inputs;
+	//public static InputHandler inputs;
 	
 	public EngineCore(int Size,int Ratio, int Scale, String Name, String path){
 	
@@ -78,6 +79,12 @@ public class EngineCore extends Canvas implements Runnable{
 		this.Frame.setResizable(true);
 		this.Frame.setLocationRelativeTo(null);
 		this.Frame.setVisible(true);
+		
+		Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage) assets.getImage("boiS.png", 38));
+		TearMovement t2 = new TearMovement(t);
+		t2.setPriority(Priority.TEAR_NORTH);
+		t.addComponent(t2);
+		AddObject(t);
 	}
 	
 	public synchronized void start() {
@@ -135,13 +142,7 @@ public class EngineCore extends Canvas implements Runnable{
 				LCount = 0;
 				FCount = 0;
 			}
-			
-			Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage) assets.getImage("boiS.png", 38));
-			TearMovement t2 = new TearMovement(t);
-			t2.setPriority(Priority.TEAR_NORTH);
-			t.addComponent(t2);
-			AddObject(t);
-			
+
 			//resets
 			//inputs.Reset();
 			//GridCollider.reset();
@@ -169,13 +170,13 @@ public class EngineCore extends Canvas implements Runnable{
 		}
 			
 		Graphics2D G = (Graphics2D) bs.getDrawGraphics();
-		G.setBackground(Color.LIGHT_GRAY);
-		G.clearRect(0, 0, this.Width*10, this.Height*10);
-		BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
-		G.drawImage(img, 0, 0, null);
+//		G.setBackground(Color.LIGHT_GRAY);
+//		G.clearRect(0, 0, this.Width*10, this.Height*10);
+//		BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
+//		G.drawImage(img, 0, 0, null);
 		//Background color (in most cases you will have an element background, which draws a picture instead)
-		//G.setColor(Color.decode("#33FFFF"));
-		//G.fillRect(0, 0, Width*Scale, Height*Scale);
+//		G.setColor(Color.decode("#33FFFF"));
+//		G.fillRect(0, 0, 500, 500);
 		
 		//calling the graphic methods of every element
 		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
