@@ -1,16 +1,27 @@
 package engine;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 public class Character extends GameObject{
 
 	Direction lastDirection;
-
-	public Character() {
-		
+	ArrayList<BufferedImage> bodyList, headList;
+	
+	public Character(int x, int y, ArrayList<BufferedImage> imageList) {
+		at = new AffineTransform();
+		at.setToIdentity();
+		at.translate(x, y);
+		headList = new ArrayList<BufferedImage>(imageList.subList(0, 8));
+		bodyList = new ArrayList<BufferedImage>(imageList.subList(8, 38));
 	}
 	
+	public ArrayList<BufferedImage> getHeadList() {
+		return headList;
+	}
 	
-	public int compareTo(GameObject o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public ArrayList<BufferedImage> getBodyList() {
+		return bodyList;
 	}
 }

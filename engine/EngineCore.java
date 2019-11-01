@@ -4,21 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 
 public class EngineCore extends Canvas implements Runnable{
 	public int Width,
@@ -87,10 +78,14 @@ public class EngineCore extends Canvas implements Runnable{
 		back.addComponent(display);
 		Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage)assets.getImage("boiS.png", 38));
 		TearMovement t2 = new TearMovement(t);
-		t2.setPriority(Priority.TEAR_NORTH);
 		t.addComponent(t2);
+		Character c = new Character(500, 500, assets.getImageList("boiS.png"));
+		BodyComponent bc = new BodyComponent(c);
+		c.addComponent(bc);
 		AddObject(back);
 		AddObject(t);
+		AddObject(c);
+		
 	}
 	
 	public synchronized void start() {

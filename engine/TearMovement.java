@@ -4,12 +4,15 @@ import java.awt.Graphics2D;
 
 public class TearMovement extends Component{
 	
-	protected int lastXPos, lastYPos;
 	protected Enum<Direction> lastDirection;
 	
 	public TearMovement(Tear parent) {
 		super(parent);
-		lastDirection = parent.lastDirection;
+		this.lastDirection = parent.lastDirection;
+		if (lastDirection == Direction.NORTH)
+			this.setPriority(Priority.TEAR_NORTH);
+		else
+			this.setPriority(Priority.TEAR_SOUTH);
 		
 	}
 	
