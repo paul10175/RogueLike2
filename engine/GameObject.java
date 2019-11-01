@@ -1,13 +1,13 @@
 package engine;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 public abstract class GameObject{
 	
 	protected ArrayList<Component> components = new ArrayList<Component>();
-	protected int posX,posY;
+	protected AffineTransform at;
 	public static int Min, Max;
 	
 	public void graphics(int priority, Graphics2D G) {

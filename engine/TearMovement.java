@@ -1,8 +1,6 @@
 package engine;
 
-import java.awt.Canvas;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 
 public class TearMovement extends Component{
 	
@@ -16,26 +14,19 @@ public class TearMovement extends Component{
 	}
 	
 	public void logic() {
-		lastXPos = parent.posX;
-		lastYPos = parent.posY;
-		
 		if (lastDirection == Direction.NORTH) {
-			parent.posY -= 2;
+			parent.at.translate(0, -5);
 		} else if (lastDirection == Direction.EAST) {
-			parent.posX += 30;
+			parent.at.translate(5, 0);
 		} else if (lastDirection == Direction.SOUTH) {
-			parent.posY += 30;
+			parent.at.translate(0, 5);
 		} else {
-			parent.posX -= 30;
+			parent.at.translate(-5, 0);
 		}
 	}
 	
 	public void graphics(Graphics2D G) {
-		Tear temp = (Tear)parent;
-		//System.out.print("This is the post" + parent.posX + "\n and this is the second" + parent.posY);
-		AffineTransform at = AffineTransform.getScaleInstance(.2, .2);
-		at.translate(parent.posX, parent.posY);
-		G.drawRenderedImage(temp.getImage(), at);
+		G.drawRenderedImage(((Tear)parent).bg, parent.at);
 	}
 	
 	//public boolean outOfBounds() {

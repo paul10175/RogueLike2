@@ -184,7 +184,6 @@ public class EngineCore extends Canvas implements Runnable{
 		//Background color (in most cases you will have an element background, which draws a picture instead)
 		//G.setColor(Color.decode("#33FFFF"));
 		//G.fillRect(0, 0, 500, 500);
-		//BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
 
 		//calling the graphic methods of every element
 		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
