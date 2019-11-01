@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-public abstract class GameObject implements Comparable<GameObject> {
+public abstract class GameObject{
 	
 	protected ArrayList<Component> components = new ArrayList<Component>();
 	protected int posX,posY;
@@ -23,11 +23,6 @@ public abstract class GameObject implements Comparable<GameObject> {
 				component.logic();
 		}
 	}
-	
-	/*
-	public int compareTo(GameObject o) {
-		return Integer.compare(this.priority, o.priority);
-	}*/
 	
 	public void addComponent(Component component) {
 		Priority priority = component.getPriority();

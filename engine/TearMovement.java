@@ -20,7 +20,7 @@ public class TearMovement extends Component{
 		lastYPos = parent.posY;
 		
 		if (lastDirection == Direction.NORTH) {
-			parent.posY -= 30;
+			parent.posY -= 2;
 		} else if (lastDirection == Direction.EAST) {
 			parent.posX += 30;
 		} else if (lastDirection == Direction.SOUTH) {
@@ -32,7 +32,7 @@ public class TearMovement extends Component{
 	
 	public void graphics(Graphics2D G) {
 		Tear temp = (Tear)parent;
-		System.out.print("This is the post" + parent.posX + "\n and this is the second" + parent.posY);
+		//System.out.print("This is the post" + parent.posX + "\n and this is the second" + parent.posY);
 		AffineTransform at = AffineTransform.getScaleInstance(.2, .2);
 		at.translate(parent.posX, parent.posY);
 		G.drawRenderedImage(temp.getImage(), at);

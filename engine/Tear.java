@@ -17,11 +17,6 @@ public class Tear extends GameObject{
 	public Direction getLastDirection() {
 		return lastDirection;
 	}
-	@Override
-	public int compareTo(GameObject o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	public BufferedImage getImage() {
 		return bg;
