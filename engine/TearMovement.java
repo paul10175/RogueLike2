@@ -2,6 +2,7 @@ package engine;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 
 public class TearMovement extends Component{
 	
@@ -33,7 +34,8 @@ public class TearMovement extends Component{
 	}
 	
 	public void graphics(Graphics2D G) {
-		G.drawRenderedImage(((Tear)parent).bg, parent.at);
+		BufferedImage img = (BufferedImage)EngineCore.assets.getImage("boiS.png", 38);
+		G.drawRenderedImage(img, parent.at);
 	}
 	
 	public boolean outOfBounds() {
