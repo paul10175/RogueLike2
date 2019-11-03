@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Character extends GameObject{
 
-	Direction lastDirection;
+	Direction lastDirection = Direction.SOUTH;
 	AffineTransform h_at;
 	ArrayList<BufferedImage> bodyList, headList;
 	
@@ -28,5 +28,9 @@ public class Character extends GameObject{
 	
 	public ArrayList<BufferedImage> getBodyList() {
 		return bodyList;
+	}
+	
+	public void setDirection(Direction dir) {
+		this.lastDirection = dir;
 	}
 }
