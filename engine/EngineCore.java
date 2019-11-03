@@ -16,12 +16,12 @@ public class EngineCore extends Canvas implements Runnable{
 		       Height,
 		       Scale;
 	public String Name;
-	public JFrame Frame;
+	public static JFrame Frame;
 	public Boolean running;
 	
 	private int SleepTime = 10;
 	
-	public ArrayList<GameObject> elements,tempElements;
+	public static ArrayList<GameObject> elements,tempElements;
 	
 	private BufferedImage BackGround;
 	private int[] pixels;
@@ -43,11 +43,11 @@ public class EngineCore extends Canvas implements Runnable{
 		this.Scale = Scale;
 		this.Name = Name;
 		this.path = path;
-		this.Frame = new JFrame(Name);
+		EngineCore.Frame = new JFrame(Name);
 		
 		// Starting the data collection/storage systems
 		inputs = new InputHandler();
-		this.Frame.addKeyListener(inputs);
+		EngineCore.Frame.addKeyListener(inputs);
 		assets = new AssetsCenter(this.path);
 		elements = new ArrayList<GameObject>();
 		
@@ -61,15 +61,15 @@ public class EngineCore extends Canvas implements Runnable{
 		setMaximumSize(new Dimension(this.Width*this.Scale, this.Height * this.Scale));
 		setPreferredSize(new Dimension(this.Width*this.Scale, this.Height * this.Scale));
 		
-		this.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.Frame.setLayout(new BorderLayout());
+		EngineCore.Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		EngineCore.Frame.setLayout(new BorderLayout());
 		
-		this.Frame.add(this, BorderLayout.CENTER);
-		this.Frame.pack();
+		EngineCore.Frame.add(this, BorderLayout.CENTER);
+		EngineCore.Frame.pack();
 
-		this.Frame.setResizable(true);
-		this.Frame.setLocationRelativeTo(null);
-		this.Frame.setVisible(true);
+		EngineCore.Frame.setResizable(true);
+		EngineCore.Frame.setLocationRelativeTo(null);
+		EngineCore.Frame.setVisible(true);
 		
 		BufferedImage img = (BufferedImage) assets.getImage("empt.png", 0);
 		BackGround back = new BackGround(img);
@@ -109,7 +109,7 @@ public class EngineCore extends Canvas implements Runnable{
 		double delta = 0;
 		
 		while(this.running) {
-			Frame.requestFocusInWindow();
+//			Frame.requestFocusInWindow();
 			tempElements = new ArrayList<GameObject>(elements);
 			boolean render = true;
 			//Time Management variables
@@ -124,7 +124,7 @@ public class EngineCore extends Canvas implements Runnable{
 				delta -=1;
 				render = true;
 			}
-			
+
 			//Sleep to limit the number of graphic updates (too much would slow the logic too)
 			try {
 				Thread.sleep(SleepTime);
@@ -135,10 +135,10 @@ public class EngineCore extends Canvas implements Runnable{
 				FCount++;
 				graphic();
 			}
-			
+
 			//Graphics update free to use all available resources. 
 			if(System.nanoTime() - LT >= 1000000000) {
-				
+
 				LT += 1000000000;
 				System.out.println("FPS: " + FCount +" LPS: " + LCount);
 				LCount = 0;
@@ -148,9 +148,9 @@ public class EngineCore extends Canvas implements Runnable{
 			//resets
 			//inputs.Reset();
 			//GridCollider.reset();
-	}
-	
-	
+		}
+
+
 	}
 	
 	public void logic() {
@@ -172,11 +172,6 @@ public class EngineCore extends Canvas implements Runnable{
 		}
 			
 		Graphics2D G = (Graphics2D) bs.getDrawGraphics();
-		//G.setBackground(Color.LIGHT_GRAY);
-		//G.clearRect(0, 0, this.Width*10, this.Height*10);
-		//Background color (in most cases you will have an element background, which draws a picture instead)
-		//G.setColor(Color.decode("#33FFFF"));
-		//G.fillRect(0, 0, 500, 500);
 
 		//calling the graphic methods of every element
 		for(int i = GameObject.Min; i <= GameObject.Max; i++) {

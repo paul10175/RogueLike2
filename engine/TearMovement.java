@@ -1,6 +1,7 @@
 package engine;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 public class TearMovement extends Component{
 	
@@ -26,13 +27,18 @@ public class TearMovement extends Component{
 		} else {
 			parent.at.translate(-5, 0);
 		}
+		if (outOfBounds()) {
+			EngineCore.elements.remove(parent);
+		}
 	}
 	
 	public void graphics(Graphics2D G) {
 		G.drawRenderedImage(((Tear)parent).bg, parent.at);
 	}
 	
-	//public boolean outOfBounds() {
-		
-	//}
+	public boolean outOfBounds() {
+		double x = parent.at.getTranslateX();
+		double y = parent.at.getTranslateY();
+		return x <= 0 || x >= EngineCore.Frame.getWidth() || y <= 0 || y >= EngineCore.Frame.getHeight();
+	}
 }
