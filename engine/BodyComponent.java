@@ -1,5 +1,6 @@
 package engine;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -13,7 +14,9 @@ public class BodyComponent extends Component {
 	}
 	
 	public void graphics(Graphics2D G) {
-		G.drawRenderedImage(((Character)parent).getBodyList().get(0), parent.at);
+		AffineTransform at = (AffineTransform) parent.at.clone();
+		at.translate(10,40);
+		G.drawRenderedImage(((Character)parent).getBodyList().get(0), at);
 	}
 	
 	public void logic() {

@@ -14,8 +14,7 @@ public class HeadComponent extends Component {
 	
 	public void graphics(Graphics2D G) {
 		// Animations here
-		G.drawRenderedImage(((Character)parent).getHeadList().get(0), parent.h_at);
-//		parent.at.translate(0, 1);
+		G.drawRenderedImage(((Character)parent).getHeadList().get(0), ((Character)parent).at);
 	}
 	
 	public void logic() {
