@@ -19,12 +19,12 @@ public class HeadComponent extends Component {
 		// AffineTransform here
 //		System.out.println(InputHandler.W_PRESSED);
 		if (InputHandler.W_PRESSED)
-			parent.at.translate(0,-1);
+			parent.at.translate(0,-2);
 		if (InputHandler.A_PRESSED)
-			parent.at.translate(-1, 0);
+			parent.at.translate(-2, 0);
 		if (InputHandler.S_PRESSED)
-			parent.at.translate(0, 1);
+			parent.at.translate(0, 2);
 		if (InputHandler.D_PRESSED)
-			parent.at.translate(1, 0);
+			parent.at.translate(2, 0);
 	}
 }
