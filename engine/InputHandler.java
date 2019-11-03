@@ -10,6 +10,7 @@ public class InputHandler implements KeyListener {
 	public static boolean A_PRESSED;
 	public static boolean S_PRESSED;
 	public static boolean D_PRESSED;
+	public static boolean SPACE_PRESSED;
 	
 	public InputHandler() {
 	}
@@ -25,6 +26,8 @@ public class InputHandler implements KeyListener {
 			S_PRESSED = true;
 		else if (code == KeyEvent.VK_D)
 			D_PRESSED = true;
+		else if (code == KeyEvent.VK_SPACE)
+			SPACE_PRESSED = true;
 	}
 
 	@Override
