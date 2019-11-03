@@ -33,7 +33,7 @@ public class EngineCore extends Canvas implements Runnable{
 	
 	public static int runSpeed = 60;
 	public static AssetsCenter assets;
-	//public static InputHandler inputs;
+	public static InputHandler inputs;
 	
 	public EngineCore(int Size,int Ratio, int Scale, String Name, String path){
 	
@@ -46,7 +46,8 @@ public class EngineCore extends Canvas implements Runnable{
 		this.Frame = new JFrame(Name);
 		
 		// Starting the data collection/storage systems
-		//inputs = new InputHandler(Frame);
+		inputs = new InputHandler();
+		this.Frame.addKeyListener(inputs);
 		assets = new AssetsCenter(this.path);
 		elements = new ArrayList<GameObject>();
 		
@@ -65,7 +66,7 @@ public class EngineCore extends Canvas implements Runnable{
 		
 		this.Frame.add(this, BorderLayout.CENTER);
 		this.Frame.pack();
-		
+
 		this.Frame.setResizable(true);
 		this.Frame.setLocationRelativeTo(null);
 		this.Frame.setVisible(true);
