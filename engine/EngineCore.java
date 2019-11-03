@@ -167,11 +167,12 @@ public class EngineCore extends Canvas implements Runnable{
 
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null) {
-			createBufferStrategy(3);
+			createBufferStrategy(2);
 			return;
 		}
 			
 		Graphics2D G = (Graphics2D) bs.getDrawGraphics();
+//		G.clearRect(0, 0, Frame.getWidth(), Frame.getHeight());
 
 		//calling the graphic methods of every element
 		for(int i = GameObject.Min; i <= GameObject.Max; i++) {
