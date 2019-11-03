@@ -78,13 +78,14 @@ public class EngineCore extends Canvas implements Runnable{
 		Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage)assets.getImage("boiS.png", 38));
 		TearMovement t2 = new TearMovement(t);
 		t.addComponent(t2);
-		Character c = new Character(500, 500, assets.getImageList("boiS.png"));
+		Character c = new Character(500, 100, assets.getImageList("boiS.png"));
+		HeadComponent hc = new HeadComponent(c);
 		BodyComponent bc = new BodyComponent(c);
 		c.addComponent(bc);
+		c.addComponent(hc);
 		AddObject(back);
 		AddObject(t);
-		AddObject(c);
-		
+		AddObject(c);		
 	}
 	
 	public synchronized void start() {
