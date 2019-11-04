@@ -11,6 +11,11 @@ import javax.swing.JFrame;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+/*
+ * Jason: BodyComponent, InputHandler, AffineTransformations
+ * Fritz: HeadComponent, Direction, Priority
+ * Paul: Character, Tear, TearMovement, Background, DisplayBackground, GameObject
+ */
 public class EngineCore extends Canvas implements Runnable{
 	public int Width,
 		       Height,
@@ -76,16 +81,12 @@ public class EngineCore extends Canvas implements Runnable{
 		DisplayBackGround display = new DisplayBackGround(back);
 		display.setPriority(Priority.BACKGROUND);
 		back.addComponent(display);
-		Tear t = new Tear(400, 400, Direction.NORTH, (BufferedImage)assets.getImage("boiS.png", 38));
-		TearMovement t2 = new TearMovement(t);
-		t.addComponent(t2);
 		Character c = new Character(500, 100, assets.getImageList("boiS.png"));
 		HeadComponent hc = new HeadComponent(c);
 		BodyComponent bc = new BodyComponent(c);
 		c.addComponent(bc);
 		c.addComponent(hc);
 		AddObject(back);
-		AddObject(t);
 		AddObject(c);		
 	}
 	
