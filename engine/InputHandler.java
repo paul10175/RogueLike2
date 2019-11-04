@@ -10,6 +10,10 @@ public class InputHandler implements KeyListener {
 	public static boolean A_PRESSED;
 	public static boolean S_PRESSED;
 	public static boolean D_PRESSED;
+	public static boolean UP_PRESSED;
+	public static boolean DOWN_PRESSED;
+	public static boolean LEFT_PRESSED;
+	public static boolean RIGHT_PRESSED;
 	public static boolean SPACE_PRESSED;
 	
 	public InputHandler() {
@@ -26,6 +30,14 @@ public class InputHandler implements KeyListener {
 			S_PRESSED = true;
 		else if (code == KeyEvent.VK_D)
 			D_PRESSED = true;
+		else if (code == KeyEvent.VK_UP)
+			UP_PRESSED = true;
+		else if (code == KeyEvent.VK_DOWN)
+			DOWN_PRESSED = true;
+		else if (code == KeyEvent.VK_LEFT)
+			LEFT_PRESSED = true;
+		else if (code == KeyEvent.VK_RIGHT)
+			RIGHT_PRESSED = true;
 		else if (code == KeyEvent.VK_SPACE)
 			SPACE_PRESSED = true;
 	}
@@ -41,6 +53,14 @@ public class InputHandler implements KeyListener {
 			S_PRESSED = false;
 		else if (code == KeyEvent.VK_D)
 			D_PRESSED = false;
+		else if (code == KeyEvent.VK_UP)
+			UP_PRESSED = false;
+		else if (code == KeyEvent.VK_DOWN)
+			DOWN_PRESSED = false;
+		else if (code == KeyEvent.VK_LEFT)
+			LEFT_PRESSED = false;
+		else if (code == KeyEvent.VK_RIGHT)
+			RIGHT_PRESSED = false;
 	}
 
 	@Override
