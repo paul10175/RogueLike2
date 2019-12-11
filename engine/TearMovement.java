@@ -41,6 +41,10 @@ public class TearMovement extends Component{
 	public boolean outOfBounds() {
 		double x = parent.at.getTranslateX();
 		double y = parent.at.getTranslateY();
-		return x <= 0 || x >= EngineCore.Frame.getWidth() || y <= 0 || y >= EngineCore.Frame.getHeight();
+		if (x <= 0 || x >= EngineCore.Frame.getWidth() || y <= 0 || y >= EngineCore.Frame.getHeight()) {
+			System.out.println("Tear out of bounds");
+			return true;
+		}
+		return false;
 	}
 }
