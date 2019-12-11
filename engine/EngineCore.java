@@ -58,8 +58,8 @@ public class EngineCore extends Canvas implements Runnable{
 		
 		
 		// Hard-coding the sky-box (not the best thing to do)
-		this.BackGround = new BufferedImage (this.Width,this.Height,BufferedImage.TYPE_INT_RGB);
-		this.pixels = ((DataBufferInt)BackGround.getRaster().getDataBuffer()).getData();
+//		this.BackGround = new BufferedImage (this.Width,this.Height,BufferedImage.TYPE_INT_RGB);
+//		this.pixels = ((DataBufferInt)BackGround.getRaster().getDataBuffer()).getData();
 		
 		// Setting up the canvas 
 		setMinimumSize(new Dimension(this.Width*this.Scale, this.Height * this.Scale));
@@ -86,8 +86,21 @@ public class EngineCore extends Canvas implements Runnable{
 		BodyComponent bc = new BodyComponent(c);
 		c.addComponent(bc);
 		c.addComponent(hc);
-		AddObject(back);
-		AddObject(c);		
+//		AddObject(back);
+//		AddObject(c);
+		GameObjectNode backNode = new GameObjectNode(back);
+		BackGround rotPlane = new BackGround(img);
+		RotateComponent rc = new RotateComponent(rotPlane);
+		rotPlane.addComponent(rc);
+		DisplayBackGround display2 = new DisplayBackGround(rotPlane);
+		display2.setPriority(Priority.BACKGROUND);
+		rotPlane.addComponent(display2);
+		GameObjectNode rotPlaneNode = new GameObjectNode(rotPlane);
+		GameObjectNode charNode = new GameObjectNode(c);
+		rotPlaneNode.addChild(charNode);
+		backNode.addChild(rotPlaneNode);
+		GameObjectGraph graph = new GameObjectGraph(backNode, null);
+		AddObject(graph);
 	}
 	
 	public synchronized void start() {
@@ -147,7 +160,7 @@ public class EngineCore extends Canvas implements Runnable{
 			}
 
 			//resets
-			//inputs.Reset();
+//			inputs.Reset();
 			//GridCollider.reset();
 		}
 

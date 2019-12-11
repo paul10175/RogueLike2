@@ -1,14 +1,16 @@
 Jason:
-AffineTransforms
-BodyComponent
-InputHandler
+Camera scaling
+Camera rotation
+GameObject hierarchy
 
 Fritz:
-HeadComponent
+Circle colliders
+Box colliders
+Interaction between circle and box colliders
 
 Paul:
-Character GameObject
-Tear (GameObject and Component)
+Animation
+Audio system?
+Lighting
+Animation graph (too hard)
 
-All:
-Animations
