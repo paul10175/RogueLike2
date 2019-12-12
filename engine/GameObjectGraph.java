@@ -20,20 +20,21 @@ public class GameObjectGraph extends GameObject {
 	public void graphics(int priority, Graphics2D G) {
 		Stack<GameObjectNode> nodeStack = new Stack<GameObjectNode>();
 		Stack<AffineTransform> transStack = new Stack<AffineTransform>();
-		// Invert the camera transform and push it into the stack first
-//		AffineTransform cameraTrans = camera.object.at;
-//		try {
-//			cameraTrans.invert();
-//		} catch (NoninvertibleTransformException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		nodeStack.push(camera);
-//		transStack.push(cameraTrans);
+		
 		nodeStack.push(head);
-		AffineTransform id = new AffineTransform();
-		id.setToIdentity();//Replace this with cameraTrans
-		transStack.push(id);
+//		AffineTransform id = new AffineTransform();
+//		id.setToIdentity();
+//		transStack.push(id);
+		
+		AffineTransform cameraTrans = new AffineTransform(camera.getRelativeTransform());
+		try {
+			cameraTrans.invert();
+		} catch (NoninvertibleTransformException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		nodeStack.push(camera);
+		transStack.push(cameraTrans);
 		while (!nodeStack.isEmpty()) {
 			GameObjectNode currNode = nodeStack.pop();
 			AffineTransform currTrans = transStack.pop();
@@ -53,6 +54,7 @@ public class GameObjectGraph extends GameObject {
 	
 	public void logic(int priority) {
 		Stack<GameObjectNode> nodeStack = new Stack<GameObjectNode>();
+		nodeStack.push(camera);
 		nodeStack.push(head);
 		while (!nodeStack.isEmpty()) {
 			GameObjectNode currNode = nodeStack.pop();

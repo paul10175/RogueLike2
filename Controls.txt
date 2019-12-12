@@ -1,0 +1,7 @@
+Controls:
+W,A,S,D - moves Isaac around
+Space bar - shoots a tear
+Arrow keys - aim Isaac's head
+I,J,K,L - moves the camera around
+U,O - rotates the camera
+H,; - scales the camera

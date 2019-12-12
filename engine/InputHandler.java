@@ -12,6 +12,14 @@ public class InputHandler implements KeyListener {
 	public static boolean D_PRESSED;
 	public static boolean Q_PRESSED;
 	public static boolean E_PRESSED;
+	public static boolean I_PRESSED;
+	public static boolean J_PRESSED;
+	public static boolean K_PRESSED;
+	public static boolean L_PRESSED;
+	public static boolean U_PRESSED;
+	public static boolean O_PRESSED;
+	public static boolean H_PRESSED;
+	public static boolean SEMICOLON_PRESSED;
 	public static boolean UP_PRESSED;
 	public static boolean DOWN_PRESSED;
 	public static boolean LEFT_PRESSED;
@@ -36,6 +44,22 @@ public class InputHandler implements KeyListener {
 			Q_PRESSED = true;
 		else if (code == KeyEvent.VK_E)
 			E_PRESSED = true;
+		else if (code == KeyEvent.VK_I)
+			I_PRESSED = true;
+		else if (code == KeyEvent.VK_J)
+			J_PRESSED = true;
+		else if (code == KeyEvent.VK_K)
+			K_PRESSED = true;
+		else if (code == KeyEvent.VK_L)
+			L_PRESSED = true;
+		else if (code == KeyEvent.VK_U)
+			U_PRESSED = true;
+		else if (code == KeyEvent.VK_O)
+			O_PRESSED = true;
+		else if (code == KeyEvent.VK_H)
+			H_PRESSED = true;
+		else if (code == KeyEvent.VK_SEMICOLON)
+			SEMICOLON_PRESSED = true;
 		else if (code == KeyEvent.VK_UP)
 			UP_PRESSED = true;
 		else if (code == KeyEvent.VK_DOWN)
@@ -63,6 +87,22 @@ public class InputHandler implements KeyListener {
 			Q_PRESSED = false;
 		else if (code == KeyEvent.VK_E)
 			E_PRESSED = false;
+		else if (code == KeyEvent.VK_I)
+			I_PRESSED = false;
+		else if (code == KeyEvent.VK_J)
+			J_PRESSED = false;
+		else if (code == KeyEvent.VK_K)
+			K_PRESSED = false;
+		else if (code == KeyEvent.VK_L)
+			L_PRESSED = false;
+		else if (code == KeyEvent.VK_U)
+			U_PRESSED = false;
+		else if (code == KeyEvent.VK_O)
+			O_PRESSED = false;
+		else if (code == KeyEvent.VK_H)
+			H_PRESSED = false;
+		else if (code == KeyEvent.VK_SEMICOLON)
+			SEMICOLON_PRESSED = false;
 		else if (code == KeyEvent.VK_UP)
 			UP_PRESSED = false;
 		else if (code == KeyEvent.VK_DOWN)

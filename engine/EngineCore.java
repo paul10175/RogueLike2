@@ -24,7 +24,7 @@ public class EngineCore extends Canvas implements Runnable{
 	public static JFrame Frame;
 	public Boolean running;
 	
-	private int SleepTime = 10;
+	private int SleepTime = 0;
 	
 	public static ArrayList<GameObject> elements,tempElements;
 	
@@ -91,7 +91,7 @@ public class EngineCore extends Canvas implements Runnable{
 		GameObjectNode backNode = new GameObjectNode(back);
 		BackGround rotPlane = new BackGround(img);
 		RotateComponent rc = new RotateComponent(rotPlane);
-		rotPlane.addComponent(rc);
+//		rotPlane.addComponent(rc);
 		DisplayBackGround display2 = new DisplayBackGround(rotPlane);
 		display2.setPriority(Priority.BACKGROUND);
 		rotPlane.addComponent(display2);
@@ -99,7 +99,13 @@ public class EngineCore extends Canvas implements Runnable{
 		GameObjectNode charNode = new GameObjectNode(c);
 		rotPlaneNode.addChild(charNode);
 		backNode.addChild(rotPlaneNode);
-		GameObjectGraph graph = new GameObjectGraph(backNode, null);
+		
+		Camera cam = new Camera(0,0);
+		CameraComponent cc = new CameraComponent(cam);
+		cam.addComponent(cc);
+		GameObjectNode camNode = new GameObjectNode(cam);
+		
+		GameObjectGraph graph = new GameObjectGraph(backNode, camNode);
 		AddObject(graph);
 	}
 	
@@ -181,12 +187,12 @@ public class EngineCore extends Canvas implements Runnable{
 
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null) {
-			createBufferStrategy(2);
+			createBufferStrategy(3);
 			return;
 		}
 			
 		Graphics2D G = (Graphics2D) bs.getDrawGraphics();
-//		G.clearRect(0, 0, Frame.getWidth(), Frame.getHeight());
+		G.clearRect(0, 0, Frame.getWidth(), Frame.getHeight());
 
 		//calling the graphic methods of every element
 		for(int i = GameObject.Min; i <= GameObject.Max; i++) {

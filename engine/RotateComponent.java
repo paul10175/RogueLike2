@@ -1,5 +1,7 @@
 package engine;
 
+import java.awt.geom.AffineTransform;
+
 public class RotateComponent extends Component {
 
 	public RotateComponent(GameObject parent) {
@@ -10,16 +12,16 @@ public class RotateComponent extends Component {
 	
 	public void logic() {
 		if (InputHandler.Q_PRESSED) {
+			AffineTransform tempTrans = new AffineTransform(parent.at);
+			this.parent.at.setToIdentity();
 			this.parent.at.rotate(0.01d);
+			this.parent.at.concatenate(tempTrans);
 		}
 		if (InputHandler.E_PRESSED) {
+			AffineTransform tempTrans = new AffineTransform(parent.at);
+			this.parent.at.setToIdentity();
 			this.parent.at.rotate(-0.01d);
-		}
-		if (InputHandler.LEFT_PRESSED) {
-			this.parent.at.translate(-2,0);
-		}
-		if (InputHandler.RIGHT_PRESSED) {
-			this.parent.at.translate(2,0);
+			this.parent.at.concatenate(tempTrans);
 		}
 	}
 
