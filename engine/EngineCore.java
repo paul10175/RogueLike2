@@ -100,7 +100,7 @@ public class EngineCore extends Canvas implements Runnable{
 		rotPlaneNode.addChild(charNode);
 		backNode.addChild(rotPlaneNode);
 		
-		Camera cam = new Camera(0,0);
+		Camera cam = new Camera();
 		CameraComponent cc = new CameraComponent(cam);
 		cam.addComponent(cc);
 		GameObjectNode camNode = new GameObjectNode(cam);

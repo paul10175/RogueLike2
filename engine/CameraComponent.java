@@ -23,22 +23,24 @@ public class CameraComponent extends Component {
 			parent.at.translate(2, 0);
 		}
 		if (InputHandler.U_PRESSED) {
-			AffineTransform tempTrans = new AffineTransform(parent.at);
-			this.parent.at.setToIdentity();
+			this.parent.at.translate(EngineCore.Frame.getWidth()/2, EngineCore.Frame.getHeight()/2);
 			this.parent.at.rotate(0.01d);
-			this.parent.at.concatenate(tempTrans);
+			this.parent.at.translate(-EngineCore.Frame.getWidth()/2, -EngineCore.Frame.getHeight()/2);
 		}
 		if (InputHandler.O_PRESSED) {
-			AffineTransform tempTrans = new AffineTransform(parent.at);
-			this.parent.at.setToIdentity();
+			this.parent.at.translate(EngineCore.Frame.getWidth()/2, EngineCore.Frame.getHeight()/2);
 			this.parent.at.rotate(-0.01d);
-			this.parent.at.concatenate(tempTrans);
+			this.parent.at.translate(-EngineCore.Frame.getWidth()/2, -EngineCore.Frame.getHeight()/2);
 		}
 		if (InputHandler.H_PRESSED) {
+			this.parent.at.translate(EngineCore.Frame.getWidth()/2, EngineCore.Frame.getHeight()/2);
 			this.parent.at.scale(1.01d, 1.01d);
+			this.parent.at.translate(-EngineCore.Frame.getWidth()/2, -EngineCore.Frame.getHeight()/2);
 		}
 		if (InputHandler.SEMICOLON_PRESSED) {
+			this.parent.at.translate(EngineCore.Frame.getWidth()/2, EngineCore.Frame.getHeight()/2);
 			this.parent.at.scale(0.99d, 0.99d);
+			this.parent.at.translate(-EngineCore.Frame.getWidth()/2, -EngineCore.Frame.getHeight()/2);
 		}
 	}
 
