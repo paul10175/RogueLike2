@@ -33,9 +33,11 @@ public class TearMovement extends Component{
 		}
 	}
 	
-	public void graphics(Graphics2D G) {
-		BufferedImage img = (BufferedImage)EngineCore.assets.getImage("boiS.png", 38);
-		G.drawRenderedImage(img, parent.at);
+	public void graphics(Graphics2D G) {			
+		BufferedImage[] img = {(BufferedImage)EngineCore.assets.getImage("boiS.png", 38)};
+		Animation a = new Animation();
+		//G.drawRenderedImage(img[0], parent.at);
+		a.iterateThroughArray(img, 10.0, (double)System.nanoTime(), G, parent.at);
 	}
 	
 	public boolean outOfBounds() {
