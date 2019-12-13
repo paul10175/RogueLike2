@@ -25,6 +25,9 @@ public class InputHandler implements KeyListener {
 	public static boolean LEFT_PRESSED;
 	public static boolean RIGHT_PRESSED;
 	public static boolean SPACE_PRESSED;
+	public static boolean P_PRESSED = false;
+	
+	public BackgroundMusic backgroundMusic = new BackgroundMusic("curb", "borat", "deathray");
 	
 	public InputHandler() {
 	}
@@ -70,6 +73,9 @@ public class InputHandler implements KeyListener {
 			RIGHT_PRESSED = true;
 		else if (code == KeyEvent.VK_SPACE)
 			SPACE_PRESSED = true;
+		else if (code == KeyEvent.VK_P) {
+			backgroundMusic.run();
+		}
 	}
 
 	@Override
