@@ -15,8 +15,6 @@ public class Animation {
 		double timePerImage = time / (double)arr.length;
 		
 		while (true) {
-			//just need to add in the time constraint 
-			
 			if (System.currentTimeMillis() >= lastTime + timePerImage) {
 				lastTime = System.currentTimeMillis();
 				G.drawRenderedImage(arr[i], a);
